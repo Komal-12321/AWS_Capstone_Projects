@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Attendance System</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial;
+      background: linear-gradient(135deg, #4facfe, #00f2fe);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      width: 350px;
+      text-align: center;
+      box-shadow: 0px 10px 25px rgba(0,0,0,0.2);
+    }
+
+    input {
+      width: 90%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #4facfe;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #007bff;
+    }
+
+    ul {
+      text-align: left;
+      margin-top: 15px;
+      max-height: 150px;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <h2>📋 Attendance System</h2>
+
+  <!-- NEW INPUT -->
+  <input type="text" id="name" placeholder="Enter your name" />
+
+  <button onclick="markAttendance()">Mark Present</button>
+
+  <p id="status"></p>
+
+  <h4>Attendance History</h4>
+  <ul id="history"></ul>
+</div>
+
+<script>
+  function markAttendance() {
+    const name = document.getElementById("name").value.trim();
+
+    if (!name) {
+      alert("Please enter your name!");
+      return;
+    }
+
+    const now = new Date().toLocaleString();
+
+    let records = JSON.parse(localStorage.getItem("attendance")) || [];
+
+    // store object (name + time)
+    records.push({ name: name, time: now });
+
+    localStorage.setItem("attendance", JSON.stringify(records));
+
+    document.getElementById("status").innerHTML =
+      `✅ ${name} marked present at ${now}`;
+
+    document.getElementById("name").value = "";
+
+    loadHistory();
+  }
+
+  function loadHistory() {
+  const records = JSON.parse(localStorage.getItem("attendance")) || [];
+  const list = document.getElementById("history");
+
+  list.innerHTML = "";
+
+  records.slice().reverse().forEach(item => {
+    const li = document.createElement("li");
+
+    // FIX: handle old + new data safely
+    if (typeof item === "object" && item.name && item.time) {
+      li.textContent = `${item.name} → ${item.time}`;
+    } else {
+      // skip invalid/old data
+      return;
+    }
+
+    list.appendChild(li);
+  });
+}
+</script>
+
+</body>
+</html>
