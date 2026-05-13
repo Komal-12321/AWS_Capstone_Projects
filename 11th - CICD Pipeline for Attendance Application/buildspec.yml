@@ -1,0 +1,20 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing dependencies...
+
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Nothing to build for static site
+
+  post_build:
+    commands:
+      - echo Deploying to S3...
+      - aws s3 sync . s3://assign-11-pipeline-bucket --delete
+
+artifacts:
+  files:
+    - '**/*'
