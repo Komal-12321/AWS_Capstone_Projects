@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Bus Booking</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background: white;
+      padding: 30px;
+      width: 340px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      text-align: center;
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #1e3c72;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      transition: 0.3s;
+    }
+
+    input:focus {
+      border-color: #2a5298;
+      outline: none;
+      box-shadow: 0 0 6px rgba(42,82,152,0.5);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    #msg {
+      margin-top: 15px;
+      font-weight: bold;
+      font-size: 16px;
+      color: green;
+      min-height: 20px;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>🚌 Book Your Seat</h2>
+
+  <input id="name" placeholder="Full Name">
+  <input id="age" placeholder="Age">
+  <input id="seats" placeholder="Seats">
+  <input id="from" placeholder="From">
+  <input id="to" placeholder="To">
+
+  <button onclick="book()">Confirm Booking</button>
+
+  <div id="msg"></div>
+</div>
+
+<script>
+const API = "http://12-assign-loadbalancer-584964664.ap-south-1.elb.amazonaws.com";
+
+async function book() {
+  const nameVal = document.getElementById("name").value;
+  const ageVal = document.getElementById("age").value;
+  const seatsVal = document.getElementById("seats").value;
+  const fromVal = document.getElementById("from").value;
+  const toVal = document.getElementById("to").value;
+
+  const res = await fetch(`${API}/book`, {
+    method: "POST",
+    headers: {"Content-Type": "application/json"},
+    body: JSON.stringify({
+      name: nameVal,
+      age: ageVal,
+      seats: seatsVal,
+      source: fromVal,
+      destination: toVal
+    })
+  });
+
+  const msg = await res.text();
+  document.getElementById("msg").innerText = msg;
+}
+</script>
+
+</body>
+</html>
