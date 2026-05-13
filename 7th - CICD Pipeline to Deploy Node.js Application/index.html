@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CI/CD S3 Application</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      margin-top: 100px;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    .card {
+      background: white;
+      color: #333;
+      width: 350px;
+      margin: 30px auto;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 6px;
+      background: #667eea;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #5a67d8;
+    }
+
+    #output {
+      margin-top: 15px;
+      font-size: 16px;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>🚀 CI/CD S3 Application</h1>
+    <p>Deployed automatically using AWS CodePipeline</p>
+
+    <div class="card">
+      <h3>Application Controls</h3>
+
+      <button onclick="getStatus()">Check Status</button>
+      <button onclick="getTime()">Get Time</button>
+
+      <div id="output">Click a button to see results</div>
+    </div>
+  </div>
+
+  <footer>
+    Built with ❤️ using AWS S3 + CI/CD
+  </footer>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CI/CD S3 Application</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      text-align: center;
+    }
+
+    .container {
+      margin-top: 100px;
+    }
+
+    h1 {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 18px;
+      opacity: 0.9;
+    }
+
+    .card {
+      background: white;
+      color: #333;
+      width: 350px;
+      margin: 30px auto;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0px 8px 20px rgba(0,0,0,0.2);
+    }
+
+    button {
+      padding: 10px 20px;
+      margin: 10px;
+      border: none;
+      border-radius: 6px;
+      background: #667eea;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #5a67d8;
+    }
+
+    #output {
+      margin-top: 15px;
+      font-size: 16px;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <h1>🚀 CI/CD S3 Application</h1>
+    <p>Deployed automatically using AWS CodePipeline</p>
+
+    <div class="card">
+      <h3>Application Controls</h3>
+
+      <button onclick="getStatus()">Check Status</button>
+      <button onclick="getTime()">Get Time</button>
+
+      <div id="output">Click a button to see results</div>
+    </div>
+  </div>
+
+  <footer>
+    Built with ❤️ using AWS S3 + CI/CD
+  </footer>
+
+  <!-- ✅ Added JS here -->
+  <script>
+    function getStatus() {
+      document.getElementById("output").innerHTML =
+        "✅ Application is running successfully!";
+    }
+
+    function getTime() {
+      document.getElementById("output").innerHTML =
+        "🕒 Current Time: " + new Date().toLocaleString();
+    }
+  </script>
+
+</body>
+</html>
+
+</body>
+</html>
