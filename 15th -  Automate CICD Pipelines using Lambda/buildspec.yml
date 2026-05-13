@@ -1,0 +1,24 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "Installing dependencies (if any)"
+
+  pre_build:
+    commands:
+      - echo "Pre-build phase started"
+
+  build:
+    commands:
+      - echo "Build started"
+      - echo "No compilation required for static site"
+
+  post_build:
+    commands:
+      - echo "Deploying to S3..."
+      - aws s3 sync . s3://assign-15-bucket --delete
+
+artifacts:
+  files:
+    - '**/*'
